@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
-import * as service from '../services';
+
 import logger from '../config/logger';
+import * as service from '../services';
 import { successResponse } from '../utils/helpers/response.helpers';
 
 export const processPendingOrders = async (
@@ -30,13 +31,12 @@ export const refundOrder = async (
   next: NextFunction,
 ) => {
   try {
-    const data = await service.refundOrder(orderId);
+    await service.refundOrder(orderId);
 
     return successResponse({
       res,
       message: 'Order refunded successfully',
       code: 200,
-      data,
     });
   } catch (error) {
     logger.error('refundOrder::Controller', error);

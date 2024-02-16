@@ -1,9 +1,10 @@
 import cron from 'node-cron';
+
+import logger from '../../config/logger';
 import db from '../../db';
 import queries from '../../db/queries';
-import { Order } from '../../models';
-import logger from '../../config/logger';
 import { OrderStatusEnum } from '../../enums';
+import { Order } from '../../models';
 
 const refundOrders = async () => {
   try {

@@ -10,12 +10,12 @@ export const successResponse = ({
   res,
   message,
   code,
-  data,
+  data = {},
 }: {
   res: Response;
   message: string;
   code: number;
-  data: Record<string, any>;
+  data?: Record<string, any>;
 }) => {
   res.status(code).json({
     status: 'success',
