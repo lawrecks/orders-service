@@ -24,3 +24,7 @@ export const processPendingOrders = async () => {
 
   return { noOfOrdersProcessed, noOfOrdersYetToBeProcessed };
 };
+
+export const refundOrder = async (orderId: string) => {
+  return db.query(queries.updateOrderStatus, [orderId, OrderStatusEnum.REFUNDED]);
+};

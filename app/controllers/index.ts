@@ -23,3 +23,24 @@ export const processPendingOrders = async (
     return next(error);
   }
 };
+
+export const refundOrder = async (
+  { params: { orderId } }: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const data = await service.refundOrder(orderId);
+
+    return successResponse({
+      res,
+      message: 'Order refunded successfully',
+      code: 200,
+      data,
+    });
+  } catch (error) {
+    logger.error('refundOrder::Controller', error);
+
+    return next(error);
+  }
+};

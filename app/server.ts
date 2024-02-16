@@ -6,6 +6,7 @@ import morgan from 'morgan';
 import config, { expressConfig } from './config';
 import logger from './config/logger';
 import db from './db';
+import runRefundCronJob from './utils/jobs';
 
 const app = express();
 const host = config.HOST;
@@ -28,5 +29,7 @@ db.connect()
   .catch((error) => {
     logger.error(error.message);
   });
+
+runRefundCronJob();
 
 export default app;

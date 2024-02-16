@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 
 import * as controller from '../../controllers';
+import * as middleware from '../../middlewares';
 
 const router = Router();
 
@@ -12,6 +13,12 @@ router.get('/', (req: Request, res: Response) => {
   });
 });
 
-router.get('/orders/process', controller.processPendingOrders);
+router.patch('/orders/process', controller.processPendingOrders);
+
+router.patch(
+  '/orders/refund/:orderId',
+  middleware.checkIfOrderExists,
+  controller.refundOrder,
+);
 
 export default router;
