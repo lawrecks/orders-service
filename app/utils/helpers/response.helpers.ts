@@ -6,12 +6,17 @@ export const ApiError = (message: string, code: number) => ({
   code,
 });
 
-export const successResponse = (
-  res: Response,
-  message: string,
-  code: number,
-  data = {},
-) => {
+export const successResponse = ({
+  res,
+  message,
+  code,
+  data,
+}: {
+  res: Response;
+  message: string;
+  code: number;
+  data: Record<string, any>;
+}) => {
   res.status(code).json({
     status: 'success',
     message,

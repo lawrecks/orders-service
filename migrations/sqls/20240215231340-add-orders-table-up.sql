@@ -1,5 +1,5 @@
 /* Replace with your SQL commands */
-CREATE TYPE order_status_enum AS ENUM('PENDING', 'CONFIRMED', 'DELIVERED', 'REFUNDED');
+CREATE TYPE order_status_enum AS ENUM('PENDING', 'CONFIRMED', 'SHIPPED', 'DELIVERED', 'REFUNDED');
 
 CREATE TABLE IF NOT EXISTS orders (
     id SERIAL PRIMARY KEY,
