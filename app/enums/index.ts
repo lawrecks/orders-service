@@ -4,6 +4,7 @@ export enum OrderStatusEnum {
   SHIPPED = 'SHIPPED',
   DELIVERED = 'DELIVERED',
   REFUNDED = 'REFUNDED',
+  REFUND_PENDING = 'REFUND_PENDING',
 }
 
 export enum PaymentStatusEnum {

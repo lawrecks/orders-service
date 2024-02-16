@@ -13,7 +13,8 @@
     ],
     "exclude": [
       "**/migrations/**",
-      "app/config/**"
+      "app/config/**",
+      "app/utils/jobs/**"
     ]
   },
   "scripts": {
@@ -24,6 +25,8 @@
     "test": "cross-env NODE_ENV=test nyc --require ts-node/register --reporter=lcov --reporter=text --reporter=text-summary mocha --exit --recursive --timeout=150000 tests/*ts",
     "lint": "eslint . --ext .ts ./",
     "lint-fix": "eslint . --ext .ts ./ --fix",
+    "db:seed": "db-migrate up:seed",
+    "db:seed:down": "db-migrate down:seed",
     "migrate:up": "db-migrate up",
     "migrate:down": "db-migrate down -c 100",
     "migrate-test:up": "db-migrate up --config database.json -e test",
@@ -54,10 +57,12 @@
     "joi": "^17.9.2",
     "mocha": "^10.2.0",
     "morgan": "^1.10.0",
+    "node-cron": "^3.0.3",
     "nodemon": "^3.0.1",
     "nyc": "^15.1.0",
     "pg-promise": "^11.5.4",
     "prettier": "^3.0.2",
+    "sinon": "^17.0.1",
     "supertest": "^6.3.3",
     "winston": "^3.6.0"
   },
@@ -70,6 +75,8 @@
     "@types/mocha": "^10.0.1",
     "@types/morgan": "^1.9.5",
     "@types/node": "^20.5.4",
+    "@types/node-cron": "^3.0.11",
+    "@types/sinon": "^17.0.3",
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",

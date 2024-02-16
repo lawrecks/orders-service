@@ -17,5 +17,23 @@ export default {
     UPDATE orders
       SET status = $2
     WHERE id = $1;
-  `
+  `,
+
+  getOrderById: `
+    SELECT * FROM orders WHERE id = $1;
+  `,
+
+  getOrdersForRefund: `
+    SELECT orders.*, 
+        json_build_object(
+              'id', p.id,
+              'type', p.type,
+              'status', p.status,
+              'created_at', p.created_at,
+              'updated_at', p.updated_at
+          ) as payment
+    FROM orders 
+    LEFT JOIN payments p ON p.order_id = orders.id
+    WHERE p.status = 'FAILED';
+  `,
 }
