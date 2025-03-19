@@ -84,10 +84,6 @@ To stop the app, run
 
     $ npm test
 
-## Task 1 and Task 2
-
-https://docs.google.com/document/d/1uxUmnR4pVBRipKcMGT-D_c4_EzHaRZfQbpvuwAGFqqs/edit?usp=sharing
-
 ## Documentation
 
 Postman: https://documenter.getpostman.com/view/10148336/2sA2r6YQLX
